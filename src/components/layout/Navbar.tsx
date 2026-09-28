@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import { ThemeToggle } from './ThemeToggle';
-import { Menu, X, Users, Star, Github, Sparkles, FileText } from 'lucide-react';
+import { Menu, X, Github, Sparkles, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
@@ -16,16 +16,7 @@ const navItems = [
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [presenceCount, setPresenceCount] = useState(14);
   const activeSection = useScrollSpy(navItems.map((item) => item.id), 120);
-
-  useEffect(() => {
-    // Randomize presence count slightly for live feel (12 - 18)
-    const interval = setInterval(() => {
-      setPresenceCount(Math.floor(Math.random() * 7) + 12);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleNavClick = (id: string) => {
     setMobileMenuOpen(false);
@@ -55,27 +46,18 @@ export const Navbar: React.FC = () => {
           {/* a) Theme Toggle */}
           <ThemeToggle />
 
-          {/* b) Live Presence Pill */}
-          <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-white/10 text-xs font-mono text-slate-300 shadow-sm">
-            <Users className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span>{presenceCount} online</span>
-          </div>
-
-          {/* c) GitHub Repo Star Pill */}
+          {/* b) Clean GitHub Profile Link */}
           <a
             href="https://github.com/GuruprasathGP07"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-white/10 text-xs font-mono text-slate-300 hover:text-white transition-colors"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-white/10 text-xs font-mono text-slate-300 hover:text-white transition-colors"
           >
             <Github className="w-3.5 h-3.5 text-white" />
             <span>GitHub</span>
-            <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-            <span className="text-white font-bold">20+</span>
           </a>
 
-          {/* d) Menu Button + Hamburger Icon */}
+          {/* c) Menu Button + Hamburger Icon */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/10 text-white text-xs font-semibold font-mono transition-colors flex items-center gap-2 shadow-md"
