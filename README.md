@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Guru Prasath C — Personal Portfolio Web Application
 
 A production-grade, high-performance personal portfolio web application built with **React 18**, **Vite**, **TypeScript** (strict mode), **Tailwind CSS**, **Framer Motion**, **Recharts**, and **Zod**.
@@ -91,3 +92,6 @@ To update any content on your portfolio:
 1. Open `src/data/content.ts`.
 2. Edit the corresponding typed object (`personalDetails`, `projectsData`, `cpStatsData`, `skillsCategories`, `achievementsData`, `certificationsData`, `currentlyData`, `contactInfo`).
 3. Save the file. Vite will hot-reload your changes automatically!
+=======
+# Guru_Portfolio
+>>>>>>> 82192d8b57dbf2cda98d1deb8f189a01a7a1d2b9
