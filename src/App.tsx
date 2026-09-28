@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StarfieldCanvas } from './components/3d/StarfieldCanvas';
 import { LoadingCounter } from './components/layout/LoadingCounter';
 import { ScrollProgress } from './components/layout/ScrollProgress';
@@ -19,10 +19,23 @@ import { ContactSection } from './components/sections/Contact';
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    // Disable browser automatic scroll restoration & scroll to top homepage
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  };
+
   return (
     <div className="relative min-h-screen bg-[#0a0e17] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-300">
       {/* 0 -> 100% Animated Loading Counter */}
-      {isLoading && <LoadingCounter onComplete={() => setIsLoading(false)} />}
+      {isLoading && <LoadingCounter onComplete={handleLoadingComplete} />}
 
       {/* Near-Black Drifting Starfield Background Canvas */}
       <StarfieldCanvas />

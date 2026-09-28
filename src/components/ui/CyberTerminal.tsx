@@ -21,10 +21,12 @@ export const CyberTerminal: React.FC = () => {
     },
   ]);
 
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (history.length > 1 && terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTop = terminalContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleRunCommand = (cmdStr: string) => {
@@ -161,7 +163,7 @@ export const CyberTerminal: React.FC = () => {
       </div>
 
       {/* Terminal Body */}
-      <div className="p-4 md:p-6 space-y-4 max-h-[300px] overflow-y-auto">
+      <div ref={terminalContainerRef} className="p-4 md:p-6 space-y-4 max-h-[300px] overflow-y-auto">
         {history.map((item, index) => (
           <div key={index} className="space-y-1">
             {item.command !== 'welcome' && (
@@ -173,7 +175,6 @@ export const CyberTerminal: React.FC = () => {
             <div>{item.output}</div>
           </div>
         ))}
-        <div ref={terminalEndRef} />
       </div>
 
       {/* Terminal Input Line */}

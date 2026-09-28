@@ -20,7 +20,7 @@ export const personalDetails: PersonalDetails = {
   tagline:
     'Crafting high-performance web applications, solving algorithmic challenges, and engineering next-gen Agentic AI systems.',
   about:
-    'Dedicated Computer Science Engineering student at KKIT Coimbatore with an 8.60 CGPA. Combining deep expertise in full-stack MERN development with competitive problem-solving rigor. Passionate about architecting scalable web applications, integrating LLM-driven agentic workflows, and competing in national hackathons.',
+    'Dedicated Computer Science Engineering student at KalaignarKarunanidhi Institute of Technology, Coimbatore with an 8.60 CGPA. Combining deep expertise in full-stack MERN development with competitive problem-solving rigor. Passionate about architecting scalable web applications, integrating LLM-driven agentic workflows, and competing in national hackathons.',
   education: {
     degree: 'B.E. Computer Science and Engineering',
     institution: 'KalaignarKarunanidhi Institute of Technology (KIT)',
